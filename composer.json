@@ -19,10 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ghopunk\\Str\\": "src",
-			"ghopunk\\Arr\\": "src",
-			"ghopunk\\File\\": "src",
-			"ghopunk\\Form\\": "src"
+            "ghopunk\\Helpers\\": "src"
         }
     },
     "prefer-stable": true
