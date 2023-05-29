@@ -3,7 +3,7 @@ namespace ghopunk\Helpers;
 
 use ghopunk\Helpers\Str;
 
-class FO {
+class Fil {
 	
 	public static function codeErrorUploadMessage($code){
 		switch ($code) {
