@@ -3,6 +3,13 @@ namespace ghopunk\Helpers;
 
 class Str {
 	
+	const MINUTE_IN_SECONDS = 60;
+	const HOUR_IN_SECONDS 	= 60 * 60;
+	const DAY_IN_SECONDS 	= 24 * 60 * 60;
+	const WEEK_IN_SECONDS 	= 7 * 24 * 60 * 60;
+	const MONTH_IN_SECONDS 	= 30 * 24 * 60 * 60;
+	const YEAR_IN_SECONDS 	= 365 * 24 * 60 * 60;
+	
 	public static function trim( $text ){
 		if( is_array($text) ){
 			return array_map( 'static::trim', $text );
