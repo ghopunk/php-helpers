@@ -7,7 +7,7 @@ class Arr {
 		if( is_array($text) ){
 			foreach ($text as &$value){
 				if ( is_array($value) ){
-					$value = call_user_func( 'static::array_unique', $value );
+					$value = call_user_func( '\\' . __METHOD__, $value );
 				}
 			}
 			$text = array_unique($text); 
@@ -33,7 +33,7 @@ class Arr {
 		if( is_array($arr) ){
 			foreach ($arr as &$value){
 				if ( is_array($value) ){
-					$value = call_user_func_array( 'static::array_filter', array($value, $callback) );
+					$value = call_user_func_array( '\\' . __METHOD__, array($value, $callback) );
 				}
 			}
 			$arr = array_filter($arr); 
@@ -54,7 +54,7 @@ class Arr {
 			$d = get_object_vars($d);
 		}
 		if ( is_array($d) ) {
-			return array_map( 'static::objectToArray', $d );
+			return array_map( '\\' . __METHOD__, $d );
 		} else {
 			return $d;
 		}
@@ -97,7 +97,7 @@ class Arr {
 		$list = array(); 
 		foreach ( $arr as $key => $value ) { 
 			if ( is_array($value) ) {
-				$result	= call_user_func( 'static::flatten', $value);
+				$result	= call_user_func( '\\' . __METHOD__, $value);
 				$list 	= array_merge( $list, $result ); 
 			} else { 
 				$list[$key] = $value; 
@@ -111,7 +111,7 @@ class Arr {
 		$haystack 	= is_array($haystack) ? array_map('strtolower', $haystack) : array($haystack);
 		if( is_array($needle) ){
 			foreach( $needle as $key=>$val ){
-				if( call_user_func_array( 'static::in_array_i' , array($val, $haystack)) ){
+				if( call_user_func_array( '\\' . __METHOD__, array($val, $haystack)) ){
 					return true;
 				}
 			}
@@ -135,7 +135,7 @@ class Arr {
 				if( is_object($value) ) {
 					$value = static::objectToArray($value);
 				}
-				if ( is_array($value) && call_user_func_array( 'static::array_key_exists', array($keySearch, $value)) ) {
+				if ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $value)) ) {
 					return true;
 				}
 			}
@@ -155,7 +155,7 @@ class Arr {
 				$value = static::objectToArray($value);
 			}
 			if ( ( $strict ? $value === $valSearch : $value == $valSearch ) 
-				|| ( is_array($value) && call_user_func_array( 'static::in_array', array($valSearch, $value, $strict) ) )
+				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($valSearch, $value, $strict) ) )
 			) {
 				return true;
 			}
@@ -175,7 +175,7 @@ class Arr {
 				$value = static::objectToArray($value);
 			}
 			if ( isset($value[$keySearch]) && ($strict ? $value[$keySearch] === $valSearch : $value[$keySearch] == $valSearch) 
-				|| ( is_array($value) && call_user_func_array( 'static::in_array_field', array($keySearch, $valSearch, $value, $strict) ) )
+				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $valSearch, $value, $strict) ) )
 			) {
 				return true;
 			}
@@ -195,7 +195,7 @@ class Arr {
 				$value = static::objectToArray($value);
 			}
 			if ( isset($value[$keySearch]) && ($strict ? $value[$keySearch] === $valSearch : $value[$keySearch] == $valSearch) 
-				|| ( is_array($value) && call_user_func_array( 'static::array_value_field', array($keySearch, $valSearch, $value, $strict) ) )
+				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $valSearch, $value, $strict) ) )
 			) {
 				return $value;
 			}
@@ -215,7 +215,7 @@ class Arr {
 				$value = static::objectToArray($value);
 			}
 			if ( isset($value[$keySearch]) && ($strict ? $value[$keySearch] === $valSearch : $value[$keySearch] == $valSearch) 
-				|| ( is_array($value) && call_user_func_array( 'static::array_key_field', array($keySearch, $valSearch, $value, $strict)) )
+				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $valSearch, $value, $strict)) )
 			) {
 				return $key;
 			}

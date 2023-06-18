@@ -12,7 +12,7 @@ class Str {
 	
 	public static function trim( $text ){
 		if( is_array($text) ){
-			return array_map( 'static::trim', $text );
+			return array_map( '\\' . __METHOD__, $text );
 		} elseif( is_string($text) ){
 			$text = trim($text);
 		}
@@ -21,7 +21,7 @@ class Str {
 	
 	public static function addslashes( $text ){
 		if( is_array($text) ){
-			return array_map( 'static::addslashes', $text );
+			return array_map( '\\' . __METHOD__, $text );
 		} elseif( is_string($text) ){
 			$text = addslashes($text);
 		}
@@ -30,7 +30,7 @@ class Str {
 	
 	public static function stripslashes( $text ){
 		if( is_array($text) ){
-			return array_map( 'static::stripslashes', $text);
+			return array_map( '\\' . __METHOD__, $text);
 		} elseif( is_string($text) ){
 			$text = stripslashes($text);
 		}
@@ -39,7 +39,7 @@ class Str {
 	
 	public static function strip_tags( $text, $allowable_tags=null){
 		if( is_array($text) ){
-			return array_map( 'static::strip_tags', $text,(array)$allowable_tags );
+			return array_map( '\\' . __METHOD__, $text,(array)$allowable_tags );
 		}
 		return strip_tags( $text, $allowable_tags );
 	}
@@ -116,7 +116,7 @@ class Str {
 	
 	public static function htmlspecialchars($text){
 		if( is_array($text) ){
-			return array_map( 'static::htmlspecialchars', $text);
+			return array_map( '\\' . __METHOD__, $text);
 		} elseif( is_string($text) ){
 			$text = htmlspecialchars($text);
 		}
