@@ -150,4 +150,16 @@ class Str {
 		return static::jsonp_decode($json,$assoc);
 	}
 	
+	//return array
+	public static function count_chars( $string ){
+		$result = [];
+		foreach ( count_chars($string, 1) as $str => $value) {
+			$result[]	= [
+							'char'	=> chr($str),
+							'count'	=> $value
+						];
+		}
+		return $result;
+	}
+	
 }
