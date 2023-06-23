@@ -14,10 +14,11 @@ class Num {
 	//pangkat
 	public static function pow($number, $exponent)
 	{
+		//positifkan dahulu
 		$abs 		= abs($exponent);
 		$floor_abs	= floor(abs($exponent));
 		$selisih	= $abs-$floor_abs;
-		if( $selisih > 0 ) { //decimal
+		if( $selisih > 0 ) { //pangkat decimal
 			$akar 	= 1/$selisih;
 			$result	= self::nthSqrt( $number, $akar );
 		} else {
@@ -25,7 +26,7 @@ class Num {
 			for ( $i = 1; $i <= abs($exponent); $i++ ) {
 				$result *= $number;
 			}
-			if( $exponent < 0 ) {
+			if( $exponent < 0 ) { //pangkat negatif
 				$result = 1/$result;
 			}
 		}
