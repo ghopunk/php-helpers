@@ -1,4 +1,5 @@
 <?php
+
 namespace ghopunk\Helpers;
 
 use ghopunk\Helpers\Str;
