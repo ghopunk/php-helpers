@@ -39,17 +39,17 @@ class Fil {
 	//return 100 MB
 	public static function getMaxUpload(){
 		$upload_max_filesize	= ini_get("upload_max_filesize");
-		$upload_max_filesize	= static::stringToBytes($upload_max_filesize);
+		$upload_max_filesize	= self::stringToBytes($upload_max_filesize);
 		$post_max_size 			= ini_get("post_max_size");
-		$post_max_size			= static::stringToBytes($post_max_size);
+		$post_max_size			= self::stringToBytes($post_max_size);
 		$max 					= min($upload_max_filesize,$post_max_size);
-		return static::formatBytes($max);
+		return self::formatBytes($max);
 	}
 	
 	//1024 => 1 KB
 	public static function formatBytes($bytes, $precision = 2) {
 		if( !is_numeric($bytes) ){
-			$bytes = static::fileSize2Bytes($bytes);
+			$bytes = self::fileSize2Bytes($bytes);
 		}
 		$units = array('B', 'KB', 'MB', 'GB', 'TB');
 		$bytes = max($bytes, 0);
@@ -135,11 +135,11 @@ class Fil {
 		return $real_file;
 	}
 
-	public static function readFileChunk( $filename, $chunk_size=false, $retbytes=true, $data=false ) {
+	public static function readFileChunk( $filename, $chunk_size=false, $returnbytes=true ) {
 		if( empty($chunk_size) ) {
 			$chunk_size	= 10 * ( 1024 * 1024 ); // how many bytes per chunk
 		} else {
-			$chunk_size = static::convertToBytes($chunk_size);
+			$chunk_size = self::convertToBytes($chunk_size);
 		}
 		$size 	= filesize($filename);
 		$buffer	= '';
@@ -154,7 +154,7 @@ class Fil {
 				echo $buffer;
 				ob_flush();
 				flush();
-				if ( $retbytes ) {
+				if ( $returnbytes ) {
 					$cnt += strlen( $buffer );
 				}
 			}
@@ -163,12 +163,12 @@ class Fil {
 			echo $buffer;
 			ob_flush();
 			flush();
-			if ( $retbytes ) {
+			if ( $returnbytes ) {
 				$cnt += strlen( $buffer );
 			}
 		}
 		$status = fclose( $handle );
-		if ( $retbytes && $status ) {
+		if ( $returnbytes && $status ) {
 			return $cnt; // return num. bytes delivered like readfile() does.
 		}
 		return $status;

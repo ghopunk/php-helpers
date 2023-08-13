@@ -53,7 +53,7 @@ class Str {
 	}
 	
 	public static function trailingslashit( $string ) {
-		return static::untrailingslashit( $string ) . '/';
+		return self::untrailingslashit( $string ) . '/';
 	}
 	
 	public static function untrailingslashit( $string ) {
@@ -148,7 +148,7 @@ class Str {
 		$json = str_replace('strip_quote','\\"',$json);
 		$json = str_replace('strip_comma',',',$json);
 		$json = str_replace('strip_colon',':',$json);
-		return static::jsonp_decode($json,$assoc);
+		return self::jsonp_decode($json,$assoc);
 	}
 	
 	//return array

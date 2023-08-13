@@ -124,7 +124,7 @@ class Arr {
 	
 	public static function array_key_exists( $keySearch, $array ){
 		if( is_object($array) ) {
-			$array = static::objectToArray($array);
+			$array = self::objectToArray($array);
 		}
 		if( !is_array($array) ) {
 			return false;
@@ -134,7 +134,7 @@ class Arr {
 				return true;
 			} else {
 				if( is_object($value) ) {
-					$value = static::objectToArray($value);
+					$value = self::objectToArray($value);
 				}
 				if ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $value)) ) {
 					return true;
@@ -146,14 +146,14 @@ class Arr {
 	
 	public static function in_array($valSearch, $array, $strict = false){
 		if( is_object($array) ) {
-			$array = static::objectToArray($array);
+			$array = self::objectToArray($array);
 		}
 		if( !is_array($array) ) {
 			return false;
 		}
 		foreach ($array as $key=>$value) {
 			if( is_object($value) ) {
-				$value = static::objectToArray($value);
+				$value = self::objectToArray($value);
 			}
 			if ( ( $strict ? $value === $valSearch : $value == $valSearch ) 
 				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($valSearch, $value, $strict) ) )
@@ -166,14 +166,14 @@ class Arr {
 	
 	public static function in_array_field($keySearch, $valSearch, $array, $strict = false) {
 		if( is_object($array) ) {
-			$array = static::objectToArray($array);
+			$array = self::objectToArray($array);
 		}
 		if( !is_array($array) ) {
 			return false;
 		}
 		foreach ($array as $key=>$value) {
 			if( is_object($value) ) {
-				$value = static::objectToArray($value);
+				$value = self::objectToArray($value);
 			}
 			if ( isset($value[$keySearch]) && ($strict ? $value[$keySearch] === $valSearch : $value[$keySearch] == $valSearch) 
 				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $valSearch, $value, $strict) ) )
@@ -186,14 +186,14 @@ class Arr {
 	
 	public static function array_value_field($keySearch, $valSearch, $array, $strict = false) {
 		if( is_object($array) ) {
-			$array = static::objectToArray($array);
+			$array = self::objectToArray($array);
 		}
 		if( !is_array($array) ) {
 			return false;
 		}
 		foreach ($array as $key=>$value) {
 			if( is_object($value) ) {
-				$value = static::objectToArray($value);
+				$value = self::objectToArray($value);
 			}
 			if ( isset($value[$keySearch]) && ($strict ? $value[$keySearch] === $valSearch : $value[$keySearch] == $valSearch) 
 				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $valSearch, $value, $strict) ) )
@@ -206,14 +206,14 @@ class Arr {
 	
 	public static function array_key_field($keySearch, $valSearch, $array, $strict = false) {
 		if( is_object($array) ) {
-			$array = static::objectToArray($array);
+			$array = self::objectToArray($array);
 		}
 		if( !is_array($array) ) {
 			return false;
 		}
 		foreach ($array as $key=>$value) {
 			if( is_object($value) ) {
-				$value = static::objectToArray($value);
+				$value = self::objectToArray($value);
 			}
 			if ( isset($value[$keySearch]) && ($strict ? $value[$keySearch] === $valSearch : $value[$keySearch] == $valSearch) 
 				|| ( is_array($value) && call_user_func_array( '\\' . __METHOD__, array($keySearch, $valSearch, $value, $strict)) )
